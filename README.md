@@ -91,7 +91,7 @@ ffmpeg -framerate 25 -i mandel%d.jpg -c:v mpeg1video -q:v 2 mandel.mpg
 FFmpeg converts the generated JPEG frames into an MPEG video
 
 ### Performance Analysis
-![Mandelbrot Performance Benchmark](mandelbrot_benchmark.png)
+![Mandelbrot Performance Benchmark](./mandel_benchmark.png)
 | Child Processes | Mean Runtime (seconds) |
 | --- | --- |
 | 1 | 81.030 |
