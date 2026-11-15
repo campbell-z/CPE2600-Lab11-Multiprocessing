@@ -16,7 +16,7 @@ the existing `mandel` program to generate an individual JPEG image.
 The parent process controls the maximum number of concurrently 
 active child processes and waits for their completion.
 
-The assignment consists of four programs:
+The assignment consists of five programs:
 
 ## Files
 
