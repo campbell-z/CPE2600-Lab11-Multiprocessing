@@ -1,0 +1,12 @@
+# Compiled executables
+mandel
+mandelmovie
+
+# Obhect files
+*.o
+
+# Generated Mandelbrot images
+mandel*.jpg
+
+# Generated movie
+*.mpg
