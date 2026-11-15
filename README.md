@@ -104,11 +104,11 @@ Increasing the number of child processes significantly reduced the execution tim
 
 - The single process configuration required an average of 81.030
 - The 20 process configuration required only 15.220
-- This represents an approxixmately 5.32x speedup
+- This represents an approximately 5.32x speedup
 - The speedup from 10 to 20 process was only 5.9%
 
 This demonstrates that increasing concurrency does not necessarily produce
-proportional performance improvements. Process cheduling overhead, resource 
+proportional performance improvements. Process scheduling overhead, resource 
 contention, and available hardware resources influence overall execution time.
 
 ## Requirements
@@ -117,4 +117,3 @@ contention, and available hardware resources influence overall execution time.
 - GCC compiler
 - GNU Make
 - POSIX-compliant signal handling functionality
-- Two terminal sessions for demonstrating interprocess signal communication
