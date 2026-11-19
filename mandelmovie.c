@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 
         for (int i = 1; i < frame; i++)
         {
-            scale *= 0.90;
+            scale *= 0.95;
         }
 
         // Prepare output filename and scale argument
