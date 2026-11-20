@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-LDLIBS = -ljpeg
+CFLAGS = -Wall -Wextra -Werror -pthread
+LDLIBS = -ljpeg -pthread
 
 TARGETS = mandel mandelmovie
 
