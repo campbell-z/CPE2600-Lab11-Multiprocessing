@@ -1,19 +1,39 @@
 #!/bin/bash
+PROCESSES=(1 2 5 10 20 50)
+THREADS=(1 2 5 10 20 50)
+RUNS=5
 
 echo "Processes,Run,Runtime" > benchmark_results.csv
 
-for processes in 1 2 5 10 20
+# Temporary file for GNU time output
+timefile=$(mktemp)
+trap 'rm -f "$timefile"' EXIT
+
+for processes in "${PROCESSES[@]}"
 do
 
-    for run in 1 2 3 4 5
+    for threads in "${THREADS[@]}"
     do
+        for run in $(seq 1 "$RUNS")
+        do
 
-        echo "Testing $processes processes, run $run..."
+            echo "Testing $processes processes, $threads threads, run $run..."
 
-        runtime=$(/usr/bin/time -f "%e" ./mandelmovie -p "$processes" 2>&1 >/dev/null)
+            if /usr/bin/time -f "%e" -o "$timefile" ./mandelmovie -p "$processes" -t "$threads" > /dev/null
+            then
+                runtime=$(cat "$timefile")
+                status="SUCCESS"
+            else
+                exit_code=$?
+                runtime=$(cat "$timefile")
+                status="FAILED ($exit_code)"
+            fi
 
-	echo "$processes,$run,$runtime" >> benchmark_results.csv
+	    echo "$processes,$run,$runtime" >> benchmark_results.csv
+        done
     done
 done
 
+echo ""
 echo "Benchmarking complete"
+echo "Results saved to benchmark_results.csv"
